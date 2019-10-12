@@ -1,4 +1,4 @@
-package io.konobank
+package io.konobank.core
 
 class Client() {
 

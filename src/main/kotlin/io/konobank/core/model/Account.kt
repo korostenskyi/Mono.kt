@@ -1,4 +1,4 @@
-package io.konobank.model
+package io.konobank.core.model
 
 data class Account(
     val id: String,

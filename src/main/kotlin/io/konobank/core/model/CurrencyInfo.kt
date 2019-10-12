@@ -1,4 +1,4 @@
-package io.konobank.model
+package io.konobank.core.model
 
 /**
  * Перелік курсів. Кожна валютна пара може мати одне і більше полів з rateSell, rateBuy, rateCross.
