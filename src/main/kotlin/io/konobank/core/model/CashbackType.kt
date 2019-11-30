@@ -1,7 +1,7 @@
 package io.konobank.core.model
 
-enum class CashbackType {
-    NONE,
-    UAH,
-    MILES
+enum class CashbackType(val title: String) {
+    NONE("None"),
+    UAH("UAN"),
+    MILES("Miles")
 }

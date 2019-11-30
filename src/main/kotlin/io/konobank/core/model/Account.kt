@@ -8,5 +8,5 @@ data class Account(
     val balance: Long,
     val creditLimit: Long,
     val currencyCode: Int,
-    val cashbackType: CashbackType
+    val cashbackType: String
 )
