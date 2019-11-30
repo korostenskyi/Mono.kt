@@ -8,3 +8,4 @@ const val CURRENCY_INFO = "/bank/currency"
 
 // Private methods
 const val CLIENT_INFO = "/personal/client-info"
+const val SET_WEBHOOK = "/personal/webhook"
