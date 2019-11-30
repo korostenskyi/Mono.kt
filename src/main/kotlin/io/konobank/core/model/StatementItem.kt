@@ -1,8 +1,12 @@
 package io.konobank.core.model
 
+import kotlinx.serialization.Serializable
+
 /**
  * Перелік транзакцій за вказанний час
  */
+
+@Serializable
 data class StatementItem(
     val id: String,
     val time: Int,

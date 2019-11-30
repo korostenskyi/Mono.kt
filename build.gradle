@@ -1,18 +1,14 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.60'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.3.60'
 }
 
 group 'io.konobank'
-version '1.0-SNAPSHOT'
+version '0.0.1'
 
 repositories {
     mavenCentral()
-}
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
-    implementation 'com.google.code.gson:gson:2.8.6'
+    jcenter()
 }
 
 compileKotlin {
@@ -20,4 +16,10 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.3.60"
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
 }
