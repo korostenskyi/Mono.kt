@@ -2,49 +2,48 @@ package io.konobank.core.data
 
 import io.konobank.core.Client
 import io.konobank.core.model.StatementItem
-import io.konobank.core.model.UserInfo
 import io.konobank.core.model.Status
+import io.konobank.core.model.UserInfo
+import io.ktor.client.HttpClient
+import io.ktor.client.request.get
+import io.ktor.client.request.header
+import io.ktor.client.request.post
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import kotlinx.serialization.parseList
-import java.net.HttpURLConnection
-import java.net.URL
 
-fun Client.fetchUserInfo(token: String = this.token): UserInfo {
-    return with(URL("$BASE_URL$CLIENT_INFO").openConnection() as HttpURLConnection) {
-        requestMethod = "GET"
-        setRequestProperty("X-Token", token)
-        inputStream.use {
-            Json(JsonConfiguration.Stable).parse(UserInfo.serializer(), String(it.readBytes()))
+suspend fun Client.fetchUserInfo(token: String = this.token): UserInfo {
+    return Json(JsonConfiguration.Stable).parse(
+        UserInfo.serializer(),
+        HttpClient().get("$BASE_URL$CLIENT_INFO") {
+            header("X-Token", token)
         }
-    }
+    )
 }
 
-fun Client.setWebHook(token: String = this.token): Status {
-    return with(URL("$BASE_URL$SET_WEBHOOK").openConnection() as HttpURLConnection) {
-        requestMethod = "POST"
-        setRequestProperty("X-Token", token)
-        inputStream.use {
-            Json(JsonConfiguration.Stable).parse(Status.serializer(), String(it.readBytes()))
+// TODO: Investigate this method
+suspend fun Client.setWebHook(token: String = this.token): Status {
+    return Json(JsonConfiguration.Stable).parse(
+        Status.serializer(),
+        HttpClient().post("$BASE_URL$SET_WEBHOOK") {
+            header("X-Token", token)
         }
-    }
+    )
 }
 
 @UnstableDefault
 @ImplicitReflectionSerializer
-fun Client.fetchStatementItems(
+suspend fun Client.fetchStatementItems(
     token: String = this.token,
     account: String,
     from: String,
     to: String = System.currentTimeMillis().toString()
 ): List<StatementItem> {
-    return with(URL("$BASE_URL$STATEMENT_ITEMS/$account/$from/$to").openConnection() as HttpURLConnection) {
-        requestMethod = "GET"
-        setRequestProperty("X-Token", token)
-        inputStream.use {
-            Json(JsonConfiguration(strictMode = false)).parseList(String(it.readBytes()))
+    return Json(JsonConfiguration(strictMode = false)).parseList(
+        HttpClient().get("$BASE_URL$STATEMENT_ITEMS/$account/$from/$to") {
+            header("X-Token", token)
         }
-    }
+    )
 }
