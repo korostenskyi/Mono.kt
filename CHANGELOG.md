@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 0.1.3 (02.02.2020)
+----------------------------
+ * Update Ktor to `1.3.0`
+ * Refactor endpoints
+
 Version 0.1.2 (27.01.2020)
 ----------------------------
  * HTTP requests are performed now via Ktor client
