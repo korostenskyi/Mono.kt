@@ -4,7 +4,6 @@ import io.konobank.core.Client
 import io.konobank.core.model.StatementItem
 import io.konobank.core.model.Status
 import io.konobank.core.model.UserInfo
-import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.post
@@ -17,7 +16,7 @@ import kotlinx.serialization.parseList
 suspend fun Client.fetchUserInfo(token: String = this.token): UserInfo {
     return Json(JsonConfiguration.Stable).parse(
         UserInfo.serializer(),
-        HttpClient().get("$BASE_URL$CLIENT_INFO") {
+        client.get("$BASE_URL$CLIENT_INFO") {
             header("X-Token", token)
         }
     )
@@ -27,7 +26,7 @@ suspend fun Client.fetchUserInfo(token: String = this.token): UserInfo {
 suspend fun Client.setWebHook(token: String = this.token): Status {
     return Json(JsonConfiguration.Stable).parse(
         Status.serializer(),
-        HttpClient().post("$BASE_URL$SET_WEBHOOK") {
+        client.post("$BASE_URL$SET_WEBHOOK") {
             header("X-Token", token)
         }
     )
@@ -42,7 +41,7 @@ suspend fun Client.fetchStatementItems(
     to: String = System.currentTimeMillis().toString()
 ): List<StatementItem> {
     return Json(JsonConfiguration(strictMode = false)).parseList(
-        HttpClient().get("$BASE_URL$STATEMENT_ITEMS/$account/$from/$to") {
+        client.get("$BASE_URL$STATEMENT_ITEMS/$account/$from/$to") {
             header("X-Token", token)
         }
     )
