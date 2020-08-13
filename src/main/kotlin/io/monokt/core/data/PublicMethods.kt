@@ -1,8 +1,8 @@
-package io.konobank.core.data
+package io.monokt.core.data
 
-import io.konobank.core.Client
-import io.konobank.core.data.destinations.CURRENCY_INFO_URL
-import io.konobank.core.model.CurrencyInfo
+import io.monokt.core.Client
+import io.monokt.core.data.destinations.CURRENCY_INFO_URL
+import io.monokt.core.model.CurrencyInfo
 import io.ktor.client.request.get
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.json.Json

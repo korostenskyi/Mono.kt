@@ -1,12 +1,12 @@
-package io.konobank.core.data
+package io.monokt.core.data
 
-import io.konobank.core.Client
-import io.konobank.core.data.destinations.CLIENT_INFO_URL
-import io.konobank.core.data.destinations.SET_WEBHOOK_URL
-import io.konobank.core.data.destinations.STATEMENT_ITEMS_URL
-import io.konobank.core.model.StatementItem
-import io.konobank.core.model.Status
-import io.konobank.core.model.UserInfo
+import io.monokt.core.Client
+import io.monokt.core.data.destinations.CLIENT_INFO_URL
+import io.monokt.core.data.destinations.SET_WEBHOOK_URL
+import io.monokt.core.data.destinations.STATEMENT_ITEMS_URL
+import io.monokt.core.model.StatementItem
+import io.monokt.core.model.Status
+import io.monokt.core.model.UserInfo
 import io.ktor.client.request.get
 import io.ktor.client.request.post
 import kotlinx.serialization.ImplicitReflectionSerializer

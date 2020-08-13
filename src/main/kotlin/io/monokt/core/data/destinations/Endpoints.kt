@@ -1,4 +1,4 @@
-package io.konobank.core.data.destinations
+package io.monokt.core.data.destinations
 
 // Public methods
 internal const val CURRENCY_INFO_ENDPOINT = "bank/currency"

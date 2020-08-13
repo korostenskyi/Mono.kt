@@ -1,4 +1,4 @@
-package io.konobank.core.model
+package io.monokt.core.model
 
 import kotlinx.serialization.Serializable
 
