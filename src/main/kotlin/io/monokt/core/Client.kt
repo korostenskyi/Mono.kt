@@ -1,4 +1,4 @@
-package io.konobank.core
+package io.monokt.core
 
 import io.ktor.client.HttpClient
 import io.ktor.client.features.defaultRequest

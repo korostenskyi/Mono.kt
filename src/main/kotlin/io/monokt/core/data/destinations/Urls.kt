@@ -1,4 +1,4 @@
-package io.konobank.core.data.destinations
+package io.monokt.core.data.destinations
 
 // Base
 internal const val BASE_URL = "https://api.monobank.ua/"
