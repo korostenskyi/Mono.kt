@@ -8,6 +8,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class UserInfo(
+    val clientId: String,
     val name: String,
+    val webHookUrl: String,
     val accounts: List<Account>
 )
