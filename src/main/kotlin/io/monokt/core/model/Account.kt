@@ -1,4 +1,4 @@
-package io.konobank.core.model
+package io.monokt.core.model
 
 import kotlinx.serialization.Serializable
 
@@ -8,5 +8,7 @@ data class Account(
     val balance: Long,
     val creditLimit: Long,
     val currencyCode: Int,
-    val cashbackType: String
+    val cashbackType: String,
+    val maskedPan: List<String>,
+    val type: String
 )
